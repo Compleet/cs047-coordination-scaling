@@ -157,12 +157,12 @@ def main():
         print(f"  Cheeger bounds: [{phi_lower:.6f}, {phi_upper:.6f}]")
 
         # Compare to configuration model (same degree sequence)
-        print(f"  Generating 10 configuration model graphs...")
-        lambda2_config = generate_config_model(G_u, n_samples=10)
+        print(f"  Generating 50 configuration model graphs...")
+        lambda2_config = generate_config_model(G_u, n_samples=50)
 
         # Compare to ER random graphs
-        print(f"  Generating 10 ER random graphs...")
-        lambda2_er = generate_er_random(n, m, n_samples=10)
+        print(f"  Generating 50 ER random graphs...")
+        lambda2_er = generate_er_random(n, m, n_samples=50)
 
         if lambda2_config:
             config_mean = np.mean(lambda2_config)

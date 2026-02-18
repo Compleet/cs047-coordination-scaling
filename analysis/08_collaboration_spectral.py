@@ -2,7 +2,7 @@
 """
 Spectral Dimension of Collaboration Networks
 ==============================================
-Paper: "Coordination Costs and Scaling Laws in Large-Scale Software Teams"
+Paper: "Two Universality Classes of Coordination Scaling Under Capacity Constraint"
 
 Measures spectral dimension d_s across diverse collaboration networks to test
 whether d_s >> 4/3 (the Alexander-Orbach prediction for random trees) is a

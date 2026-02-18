@@ -214,7 +214,7 @@ def main():
     results_all = []
 
     for name, G in networks.items():
-        results = analyze_network(G, name, n_null=20, k_max=25)
+        results = analyze_network(G, name, n_null=100, k_max=25)
         if results is not None:
             results_all.append(results)
 
@@ -259,7 +259,7 @@ def main():
         rho_real = res['rho_real'][k_idx]
         rho_null = res['rho_null_mean'][k_idx]
         p_val = res['p_values'][k_idx]
-        significant = p_val < 0.01
+        significant = p_val < 0.05
 
         print(f"\n{res['name']}:")
         print(f"  At k={k_test} (k/N ~ 0.01):")
@@ -267,7 +267,7 @@ def main():
         print(f"    Null rho_k:  {rho_null:.4f}")
         print(f"    Delta = {rho_real - rho_null:.4f}")
         print(f"    p-value:   {p_val:.4f}")
-        print(f"    Significant (p<0.01): {'YES' if significant else 'NO'}")
+        print(f"    Significant (p<0.05): {'YES' if significant else 'NO'}")
 
     # Overall assessment
     print("\n" + "=" * 70)

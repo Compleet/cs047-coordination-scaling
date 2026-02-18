@@ -2,7 +2,7 @@
 """
 ECP Temporal Robustness Analysis
 =================================
-Paper: "Coordination Costs and Scaling Laws in Large-Scale Software Teams"
+Paper: "Two Universality Classes of Coordination Scaling Under Capacity Constraint"
 
 Tests whether the ECP inflection point is robust to the choice of time bin
 size. The paper uses 90-day cumulative snapshots (Section 5, Figure 4); this

@@ -2,7 +2,7 @@
 """
 Citation Network Class M Classification
 ========================================
-Paper: "Coordination Costs and Scaling Laws in Large-Scale Software Teams"
+Paper: "Two Universality Classes of Coordination Scaling Under Capacity Constraint"
 
 Validates the regime classification framework (Section 8) on an out-of-sample
 domain: the HEP-PH citation network from SNAP. Citation networks are expected
@@ -293,7 +293,7 @@ def main():
     print("3. SPECTRAL CONCENTRATION (ECP)")
     print("=" * 50)
 
-    spectral_results = analyze_spectral(G, "HEP-PH", n_null=10)
+    spectral_results = analyze_spectral(G, "HEP-PH", n_null=50)
 
     # 4. Cheeger constant
     print("\n" + "=" * 50)
@@ -374,7 +374,6 @@ def main():
       lambda_2 = {lambda_2:.6f}
       phi bounds: [{phi_lower:.6f}, {phi_upper:.6f}]
 
-    OVERALL CLASSIFICATION: Class M
     """
     ax.text(0.1, 0.9, summary_text, transform=ax.transAxes,
             fontsize=10, verticalalignment='top', family='monospace')

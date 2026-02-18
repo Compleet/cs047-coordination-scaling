@@ -2,7 +2,7 @@
 """
 ECP k-Threshold Sensitivity Analysis
 =====================================
-Paper: "Coordination Costs and Scaling Laws in Large-Scale Software Teams"
+Paper: "Two Universality Classes of Coordination Scaling Under Capacity Constraint"
 
 Tests the robustness of the Eigenmode Concentration Property (ECP) to the
 choice of k-threshold. The ECP (Section 5, Definition 3) measures spectral
@@ -103,7 +103,7 @@ def main():
     ]
 
     k_fractions = [0.005, 0.01, 0.02, 0.05, 0.10]
-    n_null = 10  # Number of null models
+    n_null = 50  # Number of null models
 
     all_results = []
 
