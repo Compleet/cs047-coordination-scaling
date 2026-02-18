@@ -1,0 +1,3 @@
+Network,N,M,rho_real_1pct,rho_null_1pct,p_value,higher_than_null
+Bitcoin_OTC,5881,35592,0.2817158583514139,0.2494589119870227,0.0,True
+Bitcoin_Alpha,3783,24186,0.3016945694228959,0.2694509733528202,0.0,True

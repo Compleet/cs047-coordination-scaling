@@ -1,0 +1,7 @@
+Network,Degree,gamma_measured,sigma,gamma_paper,delta,within_0.1,xmin,n_above_xmin,R_vs_lognormal,p_vs_lognormal,preferred_dist
+Epinions,in,1.699,0.003,1.705,0.006,Y,1.0,51957,-18.200,0.0000,Lognormal
+Epinions,out,1.713,0.003,1.729,0.016,Y,1.0,60341,-25.040,0.0000,Lognormal
+Bitcoin_OTC,in,2.269,0.056,2.269,0.000,Y,14.0,513,-2.210,0.0271,Lognormal
+Bitcoin_OTC,out,2.059,0.033,2.059,0.000,Y,7.0,1028,-3.030,0.0024,Lognormal
+Bitcoin_Alpha,in,2.226,0.056,2.175,0.051,Y,11.0,487,-2.461,0.0139,Lognormal
+Bitcoin_Alpha,out,2.121,0.043,2.000,0.121,N,8.0,668,-2.532,0.0114,Lognormal

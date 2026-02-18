@@ -1,0 +1,5 @@
+Network,Degree,alpha_newman,SE,R2,alpha_simple
+Bitcoin_OTC,in,0.928,0.038,0.7324,0.042
+Bitcoin_OTC,out,1.038,0.042,0.6965,0.036
+Bitcoin_Alpha,in,0.877,0.037,0.7395,0.044
+Bitcoin_Alpha,out,0.996,0.048,0.6832,0.040

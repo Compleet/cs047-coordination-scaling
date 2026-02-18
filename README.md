@@ -1,4 +1,4 @@
-# CS-047: Two Universality Classes of Coordination Scaling Under Capacity Constraint
+# Two Universality Classes of Coordination Scaling Under Capacity Constraint
 
 **Author:** Joe DeWit
 **Target Journal:** Proceedings of the National Academy of Sciences (PNAS)

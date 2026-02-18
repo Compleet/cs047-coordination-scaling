@@ -1,0 +1,6 @@
+parameter,value,description
+beta,0.5714285714285714,Alexander-Orbach scaling exponent
+gamma,2.0,Communication overhead exponent (mesh)
+k_dunbar,0.0010686412877363408,Overhead coefficient for N=50
+N_dunbar,50.0,Dunbar band team size
+overhead_fraction,0.28571428571428564,Fraction overhead at N=50
