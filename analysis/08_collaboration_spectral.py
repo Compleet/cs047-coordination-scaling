@@ -11,8 +11,12 @@ cross-connections than idealized tree hierarchies, which affects the scaling
 exponent beta via the relation beta = d_s / (d_s + 1) (Section 7, Table 4).
 
 Methods:
-  1. Weyl's law: N(lambda) ~ lambda^{d_s/2} from Laplacian eigenvalue counting
-  2. Heat kernel: P(t) ~ t^{-d_s/2} from return probability decay
+  1. Weyl's law: N(lambda) ~ lambda^{d_s/2} from normalized Laplacian eigenvalue counting
+  2. Heat kernel: P(t) ~ t^{-d_s/2} from return probability decay on normalized Laplacian
+
+Note: Uses the normalized Laplacian L_norm = D^{-1/2} L D^{-1/2} as specified
+in the paper's Materials and Methods section [24]. The unnormalized Laplacian
+underestimates d_s for networks with heterogeneous degree distributions.
 
 Networks:
   - ca-CondMat (Condensed Matter co-authorship, SNAP)
@@ -104,11 +108,14 @@ def sample_graph(G, target_size=1500, seed=42):
 
 
 def compute_spectral_dimension_weyl(G, max_eigs=500):
-    """Compute spectral dimension via Weyl's law: N(lambda) ~ lambda^{d_s/2}."""
+    """Compute spectral dimension via Weyl's law: N(lambda) ~ lambda^{d_s/2}.
+    
+    Uses normalized Laplacian L_norm = I - D^{-1/2} A D^{-1/2} per paper §M&M.
+    """
     n = G.number_of_nodes()
 
-    # Get Laplacian eigenvalues
-    L = nx.laplacian_matrix(G).astype(float)
+    # Normalized Laplacian (eigenvalues in [0, 2])
+    L = nx.normalized_laplacian_matrix(G).astype(float)
 
     if n <= max_eigs + 10:
         # Full eigendecomposition for small graphs
@@ -151,11 +158,14 @@ def compute_spectral_dimension_weyl(G, max_eigs=500):
 
 
 def compute_spectral_dimension_heat_kernel(G, t_range=None):
-    """Compute spectral dimension via heat kernel: P(t) ~ t^{-d_s/2}."""
+    """Compute spectral dimension via heat kernel: P(t) ~ t^{-d_s/2}.
+    
+    Uses normalized Laplacian L_norm = I - D^{-1/2} A D^{-1/2} per paper §M&M.
+    """
     n = G.number_of_nodes()
 
-    # Get Laplacian eigenvalues
-    L = nx.laplacian_matrix(G).astype(float)
+    # Normalized Laplacian (eigenvalues in [0, 2])
+    L = nx.normalized_laplacian_matrix(G).astype(float)
 
     if n <= 1000:
         L_dense = L.toarray()
