@@ -1,9 +1,15 @@
 {
+  "_documentation": {
+    "beta_output": "OLS slope of log(total_PRs) vs log(team_size). Overall=1.34 (superlinear). The paper's Class T claim (beta~0.75) comes from spectral dimension measurements on collaboration networks (SI Appendix I), not from this exponent.",
+    "beta_overhead": "OLS slope of log(total_comments) vs log(team_size). Overall=2.08.",
+    "overhead_per_pr_exponent": "OLS slope of log(comments_per_PR) vs log(team_size). Equals beta_overhead - beta_output. Measures Brooks' Law coefficient: how coordination cost per unit of output grows with team size. NOT a scaling exponent comparable to the paper's beta.",
+    "bins": "Within-bin OLS regressions. beta_output < 1 only for N > 100 (phase transition evidence)."
+  },
   "total_rows": 439617113,
   "n_repos": 19412,
   "beta_output": 1.343106565679452,
   "beta_overhead": 2.079836527336578,
-  "beta_coordination": 0.7367299616571261,
+  "overhead_per_pr_exponent": 0.7367299616571261,
   "bins": [
     {
       "bin": "Tiny (5-10)",

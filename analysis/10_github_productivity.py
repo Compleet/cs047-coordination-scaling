@@ -144,9 +144,13 @@ def analyze_scaling(repo_stats, min_n=5, min_activity=20):
         inferred_ds = slope_pr / (1 - slope_pr)
         print(f"-> CLASS T: Inferred d_s = {inferred_ds:.2f}")
 
-    # Coordination cost (comments per PR vs team size)
+    # Coordination cost per unit of output (comments per PR vs team size)
+    # NOTE: This is the Brooks' Law coefficient — how much more costly each
+    # PR becomes as teams grow. It is NOT the scaling exponent beta from the
+    # WBE mapping. The paper's Class T claim (beta~0.75) comes from spectral
+    # dimension measurements on collaboration networks (SI Appendix I).
     print("\n" + "=" * 60)
-    print("COORDINATION COST (Comments per PR vs Team Size)")
+    print("OVERHEAD PER PR (Comments per PR vs Team Size)")
     print("=" * 60)
 
     mask = np.isfinite(comments_per_pr) & (N > 0) & (comments_per_pr > 0)
@@ -154,7 +158,7 @@ def analyze_scaling(repo_stats, min_n=5, min_activity=20):
     log_cpp = np.log(comments_per_pr[mask])
 
     slope_cpp, _, r_cpp, p_cpp, se_cpp = linregress(log_N, log_cpp)
-    print(f"beta_coordination = {slope_cpp:.4f} +/- {se_cpp:.4f}")
+    print(f"overhead_per_pr_exponent = {slope_cpp:.4f} +/- {se_cpp:.4f}")
     print(f"R^2 = {r_cpp**2:.4f}")
     print(f"-> {'Brooks Law validated' if slope_cpp > 0 else 'Brooks Law not supported'}")
 
@@ -233,7 +237,7 @@ def analyze_scaling(repo_stats, min_n=5, min_activity=20):
     print(f"\n1. Overall scaling:")
     print(f"   beta_output = {slope_pr:.3f} +/- {se_pr:.3f}")
     print(f"   beta_overhead = {slope:.3f} +/- {se:.3f}")
-    print(f"   beta_coordination = {slope_cpp:.3f} (Brooks' Law)")
+    print(f"   overhead_per_pr_exponent = {slope_cpp:.3f} (Brooks' Law)")
     print(f"\n2. Phase transition evidence:")
 
     for r in results_by_bin:
@@ -251,7 +255,7 @@ def analyze_scaling(repo_stats, min_n=5, min_activity=20):
     return {
         'beta_output': slope_pr,
         'beta_overhead': slope,
-        'beta_coordination': slope_cpp,
+        'overhead_per_pr_exponent': slope_cpp,
         'n_repos': len(data),
         'bins': results_by_bin
     }
@@ -269,7 +273,7 @@ def display_cached_results(results):
     print(f"\nOverall scaling exponents:")
     print(f"  beta_output     = {results['beta_output']:.4f}")
     print(f"  beta_overhead   = {results['beta_overhead']:.4f}")
-    print(f"  beta_coordination = {results['beta_coordination']:.4f}")
+    print(f"  overhead_per_pr_exponent = {results.get('overhead_per_pr_exponent', results.get('beta_coordination', 0)):.4f}")
 
     print(f"\nPhase transition analysis by team size:")
     print(f"{'Bin':20s} {'n':>8s} {'beta_out':>10s} {'beta_over':>12s} {'d_s':>10s} {'PR/person':>10s}")
@@ -358,7 +362,7 @@ def main():
             'n_repos': results['n_repos'],
             'beta_output': results['beta_output'],
             'beta_overhead': results['beta_overhead'],
-            'beta_coordination': results['beta_coordination'],
+            'overhead_per_pr_exponent': results['overhead_per_pr_exponent'],
             'bins': results['bins']
         }
 
