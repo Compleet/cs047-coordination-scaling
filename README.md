@@ -61,7 +61,9 @@ Each script validates a specific claim from the paper. Scripts are numbered for 
 |--------|-----------|-----------------|
 | `13_ba_dynamic_null.py` | BA preferential attachment null for ECP | SI Appendix J |
 | `14_granger_ecp.py` | Granger causality: γ leads ρ_k | SI Appendix K |
-| `15_critical_slowing_down.py` | 56× variance peak at phase transition | SI Appendix L |
+| `15_critical_slowing_down.py` | CSD variance peak at phase transition | SI Appendix L |
+| `16a_extract_repos.py` | Extract per-repo summary from GHTorrent | SI Appendix L.3 |
+| `16b_csd_robustness.py` | 7-analysis CSD robustness suite | SI Appendix L.3 |
 
 ### Regression Tests
 

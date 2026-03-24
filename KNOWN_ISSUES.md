@@ -77,3 +77,24 @@ borderline (2/4 votes). These networks are small (N = 21-185), which
 limits the reliability of the classifier. The paper acknowledges this
 in §9.4: "Preliminary testing on ecological networks yields mixed
 results."
+
+
+## 9. CSD Robustness Results
+
+The critical-slowing-down variance peak (originally reported as 56×) has
+been tested under seven alternative specifications (script 16b):
+
+- **Bin-free sliding window**: 118× peak (no bins at all)
+- **Piecewise regression**: breakpoint N ≈ 93, 95% CI [15, 203], p = 10⁻⁷
+- **Bootstrap CI**: median 50×, 95% CI [25×, 112×] (excludes 1×)
+- **Mixed-effects**: interaction Δβ = 0.56, p < 10⁻⁷⁸
+- **Language stratification**: >5× in 6/8 languages independently
+- **Residualized**: 22× after controlling for comments/PR
+- **Equal-count bins**: ~5× (attenuated — transition zone compressed)
+
+The equal-count bin attenuation is expected: forcing equal repo counts
+per bin compresses the N=50–200 transition zone (containing ~1% of repos)
+into a single bin. Log-space bins (98×) and all bin-free methods confirm
+the peak. The residualization from 46× to 22× indicates partial
+confounding from heavily-reviewed large projects but leaves a strong
+signal.
